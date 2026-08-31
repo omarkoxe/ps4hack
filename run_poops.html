@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" manifest="cache.appcache">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ps4 poops</title>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: url("bg.jpg") center center / 100% 100% no-repeat;
+    color: #c8ced8;
+    font: 15px/1.45 "Segoe UI", system-ui, sans-serif;
+  }
+
+  #duo {
+    text-align: center;
+    padding: 12px 10px 6px;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: .08em;
+  }
+
+  #duo .omar {
+    color: #57a7ff;
+  }
+
+  #duo .dot {
+    color: #ffffff;
+    margin: 0 10px;
+  }
+
+  #duo .ayman {
+    color: #ffa657;
+  }
+
+  #wrap {
+    padding: 16px 18px;
+  }
+
+  #state {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 10px;
+  }
+
+  #out {
+    white-space: pre-wrap;
+    font: 12px/1.45 Consolas, monospace;
+    background: rgba(17, 21, 27, 0.35);
+    border: 1px solid #1e2732;
+    border-radius: 5px;
+    padding: 10px 12px;
+    height: calc(100vh - 141px);
+    overflow-y: auto;
+  }
+
+  .ok {
+    color: #7fd0a0;
+  }
+
+  .bad {
+    color: #d08a7f;
+  }
+
+  .warn {
+    color: #d8c07f;
+  }
+</style>
+</head>
+
+<body>
+
+<div id="duo">
+  <span class="omar">omar.koxe</span>
+  <span class="dot">•</span>
+  <span class="ayman">ayman.mzori</span>
+</div>
+
+<div id="wrap">
+  <div id="state">loading poops chain...</div>
+  <div id="out"></div>
+</div>
+
+<script type="module">
+import "./chain_poops.js";
+</script>
+
+</body>
+</html>
