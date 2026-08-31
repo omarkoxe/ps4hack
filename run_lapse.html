@@ -3,30 +3,322 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>ps4 lapse</title>
+<title>PS4 Poops</title>
+
 <style>
-  html, body { margin:0; padding:0; background:#0b0d10; color:#c8ced8;
-               font:15px/1.45 "Segoe UI", system-ui, sans-serif; }
-  #wrap { padding:16px 18px; }
-  #state { font-size:22px; font-weight:700; margin:0 0 10px; }
-  #out { white-space:pre-wrap; font:12px/1.45 Consolas, monospace;
-         background:#11151b; border:1px solid #1e2732; border-radius:5px;
-         padding:10px 12px; height:calc(100vh - 141px); overflow-y:auto; }
-  .ok { color:#7fd0a0; } .bad { color:#d08a7f; } .warn { color:#d8c07f; }
-  #brand { text-align:center; padding:8px 10px; background:#0e1116;
-           border-bottom:1px solid #1e2732; }
-  #brand img { width:28px; height:28px; margin-right:8px; border-radius:50%;
-               vertical-align:middle; }
-  #brand b { font-size:15px; font-weight:700; letter-spacing:.14em;
-             color:#e6ebf2; vertical-align:middle; }
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+
+  background:
+    linear-gradient(rgba(0,0,0,.10), rgba(0,0,0,.10)),
+    url("bg.jpg") center center / 100% 100% no-repeat;
+
+  color: #edf3fb;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* ===== TOP HEADER ===== */
+
+#header {
+  text-align: center;
+  padding: 16px 15px 10px;
+}
+
+#brand {
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  text-shadow:
+    0 3px 10px rgba(0,0,0,.9),
+    0 0 22px rgba(100,170,255,.25);
+}
+
+#line {
+  width: 170px;
+  height: 1px;
+  margin: 7px auto 5px;
+  background: rgba(255,255,255,.32);
+}
+
+#sub {
+  font-size: 10px;
+  letter-spacing: .32em;
+  opacity: .65;
+}
+
+/* ===== USERS ===== */
+
+#users {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.user {
+  min-width: 125px;
+  padding: 7px 14px;
+
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 22px;
+
+  background: rgba(3,7,13,.38);
+
+  box-shadow:
+    0 7px 20px rgba(0,0,0,.35),
+    inset 0 1px rgba(255,255,255,.07);
+
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .06em;
+
+  text-shadow: 0 2px 7px rgba(0,0,0,.8);
+}
+
+.omar {
+  color: #66b4ff;
+}
+
+.ayman {
+  color: #ffb36b;
+}
+
+#separator {
+  font-size: 17px;
+  opacity: .8;
+}
+
+/* ===== MAIN ===== */
+
+#wrap {
+  padding: 13px 22px 20px;
+}
+
+#statusBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 9px;
+}
+
+#state {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  font-size: 18px;
+  font-weight: 700;
+
+  text-shadow: 0 2px 9px rgba(0,0,0,.9);
+}
+
+#loader {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+
+  background: #ffd66b;
+
+  box-shadow:
+    0 0 7px #ffd66b,
+    0 0 17px rgba(255,214,107,.45);
+
+  animation: pulse 1.15s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  0%,100% {
+    opacity: .35;
+    transform: scale(.75);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#version {
+  font-size: 10px;
+  letter-spacing: .12em;
+  opacity: .45;
+}
+
+/* ===== OUTPUT PANEL ===== */
+
+#panel {
+  border-radius: 11px;
+  overflow: hidden;
+
+  background: rgba(3,7,13,.50);
+
+  border: 1px solid rgba(255,255,255,.17);
+
+  box-shadow:
+    0 14px 40px rgba(0,0,0,.48),
+    inset 0 1px rgba(255,255,255,.06);
+}
+
+#panelTop {
+  display: flex;
+  align-items: center;
+
+  padding: 8px 12px;
+
+  background: rgba(255,255,255,.045);
+
+  border-bottom: 1px solid rgba(255,255,255,.10);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  margin-right: 6px;
+  border-radius: 50%;
+}
+
+.red {
+  background: #ff6b6b;
+}
+
+.yellow {
+  background: #ffd66b;
+}
+
+.green {
+  background: #7fd0a0;
+}
+
+#panelTitle {
+  margin-left: 5px;
+
+  font-size: 10px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+
+  opacity: .6;
+}
+
+#out {
+  white-space: pre-wrap;
+
+  font: 12px/1.5 Consolas, monospace;
+
+  padding: 13px 15px;
+
+  height: calc(100vh - 205px);
+
+  overflow-y: auto;
+
+  background: rgba(0,0,0,.10);
+
+  text-shadow: 0 1px 2px rgba(0,0,0,.8);
+}
+
+/* ===== STATUS COLORS ===== */
+
+.ok {
+  color: #7fd0a0;
+}
+
+.bad {
+  color: #ff8d82;
+}
+
+.warn {
+  color: #ffd66b;
+}
+
+/* ===== SMALL SCREENS ===== */
+
+@media (max-height: 600px) {
+
+  #header {
+    padding-top: 7px;
+  }
+
+  #brand {
+    font-size: 23px;
+  }
+
+  #users {
+    margin-top: 7px;
+  }
+
+  #wrap {
+    padding-top: 7px;
+  }
+
+  #out {
+    height: calc(100vh - 165px);
+  }
+}
 </style>
 </head>
+
 <body>
-<div id="brand"><img src="logo_raw.png" alt="" width="28" height="28"><b>RAW GAME</b></div>
-<div id="wrap">
-  <div id="state">loading lapse chain...</div>
-  <div id="out"></div>
+
+<div id="header">
+
+  <div id="brand">POOPS</div>
+
+  <div id="line"></div>
+
+  <div id="sub">PS4 SYSTEM INTERFACE</div>
+
+  <div id="users">
+    <div class="user omar">omar.koxe</div>
+
+    <div id="separator">•</div>
+
+    <div class="user ayman">ayman.mzori</div>
+  </div>
+
 </div>
-<script type="module">import "./chain_lapse.js";</script>
+
+<div id="wrap">
+
+  <div id="statusBar">
+
+    <div id="state">
+      <span id="loader"></span>
+      <span>loading poops chain...</span>
+    </div>
+<div id="version">
+      SYSTEM
+    </div>
+
+  </div>
+
+  <div id="panel">
+
+    <div id="panelTop">
+      <span class="dot red"></span>
+      <span class="dot yellow"></span>
+      <span class="dot green"></span>
+      <span id="panelTitle">system output</span>
+    </div>
+
+    <div id="out"></div>
+
+  </div>
+
+</div>
+
+<script type="module">
+import "./chain_poops.js";
+</script>
+
 </body>
 </html>
